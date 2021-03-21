@@ -34,6 +34,16 @@ export default function ViewCount(props) {
       text: "Your View Count History",
       fontSize: 25,
     },
+    scales: {
+      yAxes: [
+        {
+          scaleLabel: {
+            display: true,
+            labelString: "total view count",
+          },
+        },
+      ],
+    },
   };
   return (
     <div>
