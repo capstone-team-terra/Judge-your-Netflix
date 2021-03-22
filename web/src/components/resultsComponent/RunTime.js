@@ -8,7 +8,8 @@ export default function RunTime(props) {
   const resultsArr = Object.entries(result);
 
   //total view time
-  const sumHrs = Object.keys(result).reduce((acc, key) => acc + result[key], 0);
+  const sumMin = Object.keys(result).reduce((acc, key) => acc + result[key], 0);
+  const sumHrs = Math.ceil(sumMin / 60);
   const sumDays = Math.ceil(sumHrs / 24);
   const sumMonth = Math.ceil(sumDays / 30);
   const sumYear = Math.ceil(sumMonth / 12);
