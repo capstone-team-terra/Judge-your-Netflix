@@ -49,7 +49,7 @@ export default function GenresCount(props) {
       {sorted.length !== 0 ? (
         <div>
           <h2>
-            Hmm.... You watched1 {sorted[0][1]} {sorted[0][0]} shows...
+            Hmm.... You watched {sorted[0][1]} {sorted[0][0]} shows...
           </h2>
           <div>
             <Pie
