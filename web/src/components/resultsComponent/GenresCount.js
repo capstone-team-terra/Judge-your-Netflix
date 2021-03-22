@@ -64,7 +64,8 @@ export default function GenresCount(props) {
                   display: true,
                 },
               }}
-              width={800}
+              width={600}
+              height={400}
             />
           </div>
         </div>

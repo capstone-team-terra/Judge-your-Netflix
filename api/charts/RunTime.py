@@ -5,7 +5,7 @@ import numpy as np
 def runTime():
     df_mydata = pd.read_csv('./NetflixViewingHistory.csv')
     # below csv includes new column (runTime) to ratings csv
-    df_merged = pd.read_csv('./updatedData.csv')
+    df_merged = pd.read_csv('./ratings.csv')
 
     # below function does similar to pickleData.py
     df_mydata['rootName'] = df_mydata['Title'].apply(
