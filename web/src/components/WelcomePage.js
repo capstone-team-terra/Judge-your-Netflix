@@ -1,5 +1,6 @@
 import React from "react";
-import UploadPage from "./UploadPage";
+import { Button, Container, Row, Col } from "react-bootstrap";
+import GetStarted from "./GetStarted";
 
 class WelcomePage extends React.Component {
   constructor(props) {
@@ -14,18 +15,27 @@ class WelcomePage extends React.Component {
   }
 
   render() {
-    console.log("state in welcomePage", this.state);
     return (
       <div>
         {this.state.clicked ? (
-          <UploadPage />
+          <GetStarted />
         ) : (
-          <div>
-            <h2>Welcome Page</h2>
-            <button type="button" onClick={this.handleClick}>
-              Find Out
-            </button>
-          </div>
+          <Container className="text-center">
+            <Row>
+              <Col>
+                <h1 className="netflix-red mb-5">
+                  How bad is your Netflix taste?
+                </h1>
+              </Col>
+            </Row>
+            <Row>
+              <Col>
+                <Button variant="outline-light" onClick={this.handleClick}>
+                  Find Out
+                </Button>
+              </Col>
+            </Row>
+          </Container>
         )}
       </div>
     );

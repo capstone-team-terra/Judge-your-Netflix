@@ -1,6 +1,7 @@
 import React from "react";
 import "./App.css";
 import WelcomePage from "./components/WelcomePage";
+
 const App = () => {
   return (
     <div className="App">
