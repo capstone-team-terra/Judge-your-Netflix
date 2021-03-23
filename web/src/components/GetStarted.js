@@ -66,7 +66,8 @@ const GetStarted = () => {
             <div>
               <p>
                 I can't judge your Netflix without seeing your view history.{" "}
-                <br />I guess I can first show you what you are missing out....
+                <br />
+                Do you want to see our analysis skill using our sample data ?
               </p>
               <Button
                 variant="light"
