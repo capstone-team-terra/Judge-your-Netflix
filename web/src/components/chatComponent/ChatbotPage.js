@@ -2,17 +2,17 @@ import React from "react";
 import AllResults from "../resultsComponent/AllResults";
 import ChatBot from "react-simple-chatbot";
 import { ThemeProvider } from "styled-components";
-
+import { alignPropType } from "react-bootstrap/esm/DropdownMenu";
 const theme = {
-  background: "#282c34",
-  fontFamily: "Helvetica Neue",
-  headerBgColor: "#282c34",
-  headerFontColor: "#282c34",
+  background: "#000000",
+  headerBgColor: "#000000",
+  headerFontColor: "#000000",
   headerFontSize: "15px",
-  botBubbleColor: "#282c34",
+  botBubbleColor: "#000000",
   botFontColor: "#fff",
-  userBubbleColor: "#282c34",
-  userFontColor: "#4a4a4a",
+  userBubbleColor: "#000000",
+  userFontColor: "#fff",
+  fontFamily: "Noto Sans JP",
 };
 class ChatbotPage extends React.Component {
   constructor(props) {
@@ -29,7 +29,6 @@ class ChatbotPage extends React.Component {
   handleClick() {
     this.setState({ clicked: true });
   }
-
   render() {
     const genresCount = this.props.result.genres;
     const resultsArr = Object.entries(genresCount);
@@ -59,23 +58,24 @@ class ChatbotPage extends React.Component {
         options: [{ value: 1, label: "I guess so... Why?", trigger: "6" }],
       },
       { id: "6", message: "Nothing...", end: true },
+      // { id: "7", component: <AllResults result={this.state.result} /> },
     ];
     return this.state.clicked ? (
       <AllResults result={this.state.result} />
     ) : (
       <div>
-        <h2>Rendering Chatbot!</h2>
         <ThemeProvider theme={theme}>
           <ChatBot
             steps={steps}
-            width="1000px"
+            width="800px"
             placeholder=" "
             hideBotAvatar="true"
             hideHeader="true"
             hideUserAvatar="true"
+            hideInput="true"
+            delay="50"
           />
         </ThemeProvider>
-
         <button type="button" onClick={this.handleClick}>
           Get Your Results!
         </button>
