@@ -6,7 +6,6 @@ from collections import Counter
 def genresCounter():
     df = pd.read_pickle(
         './merged_data.pkl')
-    # change the path when testing
     list_of_genres = df['genres'].to_list()
     df['genre_ls'] = df['genres'].apply(
         lambda s: s.split(",") if type(s) == str else s)

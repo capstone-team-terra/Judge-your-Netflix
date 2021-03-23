@@ -4,8 +4,8 @@ import os
 from flask import Flask, request, render_template, url_for, redirect, send_from_directory
 from flask_cors import CORS
 from werkzeug.utils import secure_filename
-from results import runThis
 from pickleData import pickleThis
+from charts.MostViewed import runThis
 from charts.TopGenres import genresCounter
 from charts.WatchTime import watchFrequency
 from charts.MostPopular import popularityCounter
@@ -23,24 +23,19 @@ def allowed_file(filename):
     return '.' in filename and \
         filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
-# @app.route("/")
-# def fileFrontPage():
-#  return render_template('fileform.html')
-
-
 @app.route("/done")
 def results():
     pickleThis()
-    dictionary1 = runThis()
-    dictionary2 = genresCounter()
-    dictionary3 = popularityCounter()
-    dictionary4 = watchFrequency()
-    dictionary5 = runTime()
-    return {'genres': dictionary2,
-            'views': dictionary1,
-            'popularity': dictionary3,
-            'viewcount': dictionary4,
-            'runtime': dictionary5
+    most_viewed = runThis()
+    top_genres = genresCounter()
+    most_popular = popularityCounter()
+    watch_frequency = watchFrequency()
+    watch_time = runTime()
+    return {'genres': top_genres,
+            'views': most_viewed,
+            'popularity': most_popular,
+            'viewcount': watch_frequency,
+            'runtime': watch_time
             }
 
 
@@ -53,8 +48,7 @@ def handleFileUpload():
             print('ran the if statement')
             filename = secure_filename(file.filename)
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-            # return redirect(url_for('fileFrontPage'))
-            # return redirect(url_for('uploaded_file', filename=filename))
+
             return redirect(url_for('results'))
     return '''
     <!doctype html>
@@ -65,11 +59,6 @@ def handleFileUpload():
       <input type=submit value=Upload>
     </form>
     '''
-
-
-@app.route('/uploads/<filename>')
-def uploaded_file(filename):
-    return send_from_directory(app.config['UPLOAD_FOLDER'], filename)
 
 
 if __name__ == '__main__':

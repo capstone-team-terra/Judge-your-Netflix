@@ -36,29 +36,54 @@ class ChatbotPage extends React.Component {
     const steps = [
       {
         id: "1",
-        message: "Are you ready for some serious roasting time?",
+        message:
+          "Hey. I'm ANDY (they/them). You might know us from our hit single 'Netflix Ba-Bum' available for streaming on SoundCloud now.",
         trigger: "2",
+        delay: 3000,
       },
       {
         id: "2",
-        options: [{ value: 1, label: "Yes go ahead!", trigger: "3" }],
+        message:
+          "Listen... I have been looking at your Netflix viewing history and um...",
+        trigger: "3",
+        delay: 3000,
       },
       {
         id: "3",
-        message: "Okay. Let me see... ",
+        message: "...it's something.",
         trigger: "4",
+        delay: 4000,
       },
       {
         id: "4",
-        message: `Did you really watch ${sorted[0][1]} ${sorted[0][0]} shows?`,
-        trigger: "5",
+        options: [
+          {
+            value: 1,
+            label: "I share this profile with someone.",
+            trigger: "5",
+          },
+          { value: 2, label: "Excuse me?", trigger: "4" },
+        ],
       },
       {
         id: "5",
-        options: [{ value: 1, label: "I guess so... Why?", trigger: "6" }],
+        message: "lol ok.",
+        trigger: "6",
       },
-      { id: "6", message: "Nothing...", end: true },
-      // { id: "7", component: <AllResults result={this.state.result} /> },
+      {
+        id: "6",
+        message: `I can tell you are the type to run away from your responsibilities and problems based on how others view you.`,
+        trigger: "7",
+      },
+      {
+        id: "7",
+        component: (
+          <button type="button" onClick={this.handleClick}>
+            Get Your Results!
+          </button>
+        ),
+        end: true,
+      },
     ];
     return this.state.clicked ? (
       <AllResults result={this.state.result} />
@@ -73,12 +98,10 @@ class ChatbotPage extends React.Component {
             hideHeader="true"
             hideUserAvatar="true"
             hideInput="true"
-            delay="50"
+            delay="20"
+            userDelay="2000"
           />
         </ThemeProvider>
-        <button type="button" onClick={this.handleClick}>
-          Get Your Results!
-        </button>
       </div>
     );
   }

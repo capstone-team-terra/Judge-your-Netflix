@@ -31,6 +31,6 @@ def runTime():
     month_group = df_runtime.groupby(['month_year'])
     sum_per_month = month_group['runtimeMinutes'].sum()
 
-    # conver the series to dictionary
+    # convert the series to dictionary
     dictionary = dict(zip(sum_per_month.index.format(), sum_per_month))
     return dictionary
