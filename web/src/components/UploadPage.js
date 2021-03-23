@@ -1,6 +1,8 @@
 import React from "react";
 import ChatbotPage from "./chatComponent/ChatbotPage";
 import Typewriter from "typewriter-effect";
+import Instruction from "./Instruction";
+import { Form, Button, Card } from "react-bootstrap";
 
 class UploadPage extends React.Component {
   constructor(props) {
@@ -56,15 +58,68 @@ class UploadPage extends React.Component {
             />
           </div>
         ) : (
-          <form
-            action="/handleUpload"
-            method="post"
-            encType="multipart/form-data"
-            onSubmit={this.handleSubmit}
-          >
-            Choose the file: <input type="file" name="submission" /> <br />
-            <input type="submit" value="Upload" />
-          </form>
+          <div>
+            <div
+              style={{
+                height: "100vh",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <div>
+                <p className="mb-5">Please upload your viewing history here</p>
+                <Card>
+                  <Card.Body style={{ color: "black" }}>
+                    <Form
+                      action="/handleUpload"
+                      method="post"
+                      encType="multipart/form-data"
+                      onSubmit={this.handleSubmit}
+                      style={{ display: "flex", flexDirection: "column" }}
+                    >
+                      <Form.Label>Upload your file: </Form.Label>
+                      <Form.File
+                        name="submission"
+                        style={{
+                          fontSize: 20,
+                          backgroundColor: "lightgray",
+                          borderColor: "red",
+                        }}
+                      />
+                      <Button
+                        type="submit"
+                        value="Upload"
+                        className="mt-3"
+                        style={{ alignSelf: "flex-end" }}
+                      >
+                        Upload
+                      </Button>
+                    </Form>
+                  </Card.Body>
+                </Card>
+                <p className="mt-5">
+                  Don't know how to get your viewing history?
+                </p>
+                <p>Follow instruction below</p>
+              </div>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="50"
+                height="50"
+                fill="currentColor"
+                className="bi bi-chevron-compact-down mt-5"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M1.553 6.776a.5.5 0 0 1 .67-.223L8 9.44l5.776-2.888a.5.5 0 1 1 .448.894l-6 3a.5.5 0 0 1-.448 0l-6-3a.5.5 0 0 1-.223-.67z"
+                />
+              </svg>
+            </div>
+            <Instruction />
+          </div>
         )}
       </div>
     );
