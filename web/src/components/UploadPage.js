@@ -1,5 +1,6 @@
 import React from "react";
 import ChatbotPage from "./chatComponent/ChatbotPage";
+import Instruction from "./Instruction";
 
 class UploadPage extends React.Component {
   constructor(props) {
@@ -33,15 +34,18 @@ class UploadPage extends React.Component {
         {this.state.loaded ? (
           <ChatbotPage result={this.state.result} />
         ) : (
-          <form
-            action="/handleUpload"
-            method="post"
-            encType="multipart/form-data"
-            onSubmit={this.handleSubmit}
-          >
-            Choose the file: <input type="file" name="submission" /> <br />
-            <input type="submit" value="Upload" />
-          </form>
+          <div>
+            <Instruction />
+            <form
+              action="/handleUpload"
+              method="post"
+              encType="multipart/form-data"
+              onSubmit={this.handleSubmit}
+            >
+              Choose the file: <input type="file" name="submission" /> <br />
+              <input type="submit" value="Upload" />
+            </form>
+          </div>
         )}
       </div>
     );
