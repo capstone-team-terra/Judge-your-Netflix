@@ -12,11 +12,11 @@ def pickleThis():
         lambda s: s.lower() if type(s) == str else s)
     df_origin_ratings['root_lower'] = df_origin_ratings['primaryTitle'].apply(
         lambda s: s.lower() if type(s) == str else s)
-    df_origin_ratings = df_origin_ratings.sort_values(by=['numVotes'], ascending=False).drop_duplicates(subset='primaryTitle', keep='first')
+    df_origin_ratings = df_origin_ratings.sort_values(
+        by=['numVotes'], ascending=False).drop_duplicates(subset='primaryTitle', keep='first')
     df_merged = df_origin_history.merge(
         df_origin_ratings, how="inner", on="root_lower")
-    df_merged = df_merged.drop_duplicates(subset='primaryTitle', keep='first')
-
+    # df_merged = df_merged.drop_duplicates(subset='primaryTitle', keep='first')
 
     mergedData_file = 'merged_data.pkl'
     pickle.dump(df_merged, open(mergedData_file, 'wb'))

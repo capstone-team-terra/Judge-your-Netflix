@@ -79,10 +79,6 @@ export default function ShowsCount(props) {
       style={{
         backgroundColor: "rgb(34, 36, 41)",
         boxShadow: "0 0 6px rgba(0, 0, 0, 0.1)",
-        // position: "absolute",
-        // top: "50%",
-        // left: "50%",
-        // transform: "translate(-50%, -50%)",
         maxWidth: "500px",
         height: "500px",
         borderRadius: "10px",
@@ -96,10 +92,6 @@ export default function ShowsCount(props) {
         className="about"
         style={{ height: "150px", padding: "20px", boxSizing: "border-box" }}
       >
-        {/* <h1 style={{ fontSize: "20px" }}>
-          You watched <strong>{top1Name}</strong>{" "}
-          <span style={{ color: "red" }}>{top1Count}</span> times!
-        </h1> */}
         <div>
           <HorizontalBar
             data={resultData}
@@ -108,6 +100,10 @@ export default function ShowsCount(props) {
             height={250}
           />
         </div>
+        {/* <h1 style={{ fontSize: "20px" }}>
+          You watched <strong>{top1Name}</strong>{" "}
+          <span style={{ color: "red" }}>{top1Count}</span> times!
+        </h1> */}
         {/* <h2 style={{ fontSize: "15px" }}>Your Top 3 Most Viewed Shows</h2>
         <p style={{ fontSize: "15px" }}>
           {top1Name}: {top1Count} <br />
