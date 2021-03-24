@@ -1,5 +1,6 @@
 import React from "react";
 import { Line } from "react-chartjs-2";
+import moment from "moment";
 
 export default function RunTime(props) {
   const { result } = props;
@@ -9,13 +10,13 @@ export default function RunTime(props) {
 
   //total view time
   const sumMin = Object.keys(result).reduce((acc, key) => acc + result[key], 0);
-  const sumHrs = Math.ceil(sumMin / 60);
-  const sumDays = Math.ceil(sumHrs / 24);
-  const sumMonth = Math.ceil(sumDays / 30);
-  const sumYear = Math.ceil(sumMonth / 12);
+  const sumHrs = Math.floor(sumMin / 60);
+  const sumDays = Math.floor(sumHrs / 24);
+  const sumMonth = Math.floor(sumDays / 30);
+  const sumYear = Math.floor(sumMonth / 12);
 
   //define yValues & xValues to be used with your chart
-  const xValues = resultsArr.map((data) => data[0]);
+  const xValues = resultsArr.map((data) => moment(data[0]).format("MMM YY"));
   const yValues = resultsArr.map((data) => Math.ceil(data[1] / 60));
 
   //main data set for Graph
@@ -23,7 +24,6 @@ export default function RunTime(props) {
     labels: xValues,
     datasets: [
       {
-        labels: "Total watch time (in minutes) per month",
         data: yValues,
         backgroundColor: "rgba(87, 20, 200, 0.6)",
         borderColor: "rgba(87, 20, 200, 0.6)",
@@ -38,15 +38,18 @@ export default function RunTime(props) {
     maintainAspectRatio: false,
     title: {
       display: true,
-      text: "Your run time History",
+      text: "Total Hours of Shows You Watched",
       fontSize: 25,
+    },
+    legend: {
+      display: false,
     },
     scales: {
       yAxes: [
         {
           scaleLabel: {
             display: true,
-            labelString: "total view time (hours)",
+            labelString: "total view time (per hours)",
           },
         },
       ],
@@ -54,10 +57,10 @@ export default function RunTime(props) {
   };
   return (
     <div>
-      <h3>
+      <h4>
         You watched total of <span style={{ color: "red" }}>{sumHrs}</span>{" "}
         hours worth of Netflix shows since you signed up....{" "}
-      </h3>
+      </h4>
       <p>
         That is about <span style={{ color: "red" }}>{sumDays}</span> days....
       </p>
@@ -70,7 +73,7 @@ export default function RunTime(props) {
         <span style={{ color: "red" }}>{sumYear}</span> years....
       </p>
       <div>
-        <Line data={resultData} options={options} width={800} height={600} />
+        <Line data={resultData} options={options} width={600} height={400} />
       </div>
     </div>
   );

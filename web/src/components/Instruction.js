@@ -1,28 +1,52 @@
 import React from "react";
 import { Card, Container } from "react-bootstrap";
+import YouTube from "react-youtube";
+
+//Instruction Youtube link & ID:
+//ID: kmADyI4IOd4
+//URL: https://youtu.be/kmADyI4IOd4
 
 const Instruction = () => {
+  const VideoOnReady = (event) => {
+    event.target.stopVideo();
+  };
+
+  const videoOptions = {
+    height: "400",
+    width: "750",
+    playerVars: {
+      autoplay: 1,
+    },
+  };
+
   return (
-    <Container className="text-center">
-      <p>Rendering Instruction Page</p>
-      <Card className="mb-5">
-        <Card.Body>
-          <Card.Text className="text-dark text-left">
-            <ol>
-              <li>
-                Go to your Netflix
-                <a href="https://www.netflix.com/YourAccount"> Account </a>{" "}
-                page.
-              </li>
-              <li>
-                Open the Profile & Parental Controls settings for the profile
-                you want to see.
-              </li>
-              <li>Open Viewing activity. </li>
-              <li>If you see a limited list, use the Show More button.</li>
-            </ol>
-          </Card.Text>
-        </Card.Body>
+    <Container
+      className="text-center"
+      style={{
+        height: "100vh",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      <p className="mb-4">
+        Go to your{" "}
+        <a
+          href="https://www.netflix.com/YourAccount"
+          target="_blank"
+          rel="noreferrer noopener"
+        >
+          Netflix Account
+        </a>{" "}
+        and follow the video instruction
+      </p>
+      <Card>
+        <YouTube
+          videoId="kmADyI4IOd4"
+          opts={videoOptions}
+          onReady={VideoOnReady}
+        />
       </Card>
     </Container>
   );
