@@ -88,8 +88,26 @@ const Sample = () => {
           </Col>
         </Row>
         {doneTyping && (
-          <Row className="justify-content-center mt-5">
-            <h2>Your score is 70 !</h2>
+          <Row className="justify-content-center mt-5 mb-5">
+            <Col>
+              <h2>Your score is {70} !</h2>
+            </Col>
+            <Col md={12} className="mt-5">
+              <h5>Scroll down to see your results</h5>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="50"
+                height="50"
+                fill="currentColor"
+                className="bi bi-chevron-compact-down mt-5"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M1.553 6.776a.5.5 0 0 1 .67-.223L8 9.44l5.776-2.888a.5.5 0 1 1 .448.894l-6 3a.5.5 0 0 1-.448 0l-6-3a.5.5 0 0 1-.223-.67z"
+                />
+              </svg>
+            </Col>
           </Row>
         )}
       </Container>
