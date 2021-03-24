@@ -114,10 +114,7 @@ const Sample = () => {
       <Container className="text-center">
         <Row>
           <Col md={6}>
-            <Card className="text-dark mb-2">
-              <Card.Header>Top Shows</Card.Header>
-              <ShowsCount result={showData} />
-            </Card>
+            <ShowsCount result={showData} />
           </Col>
           <Col md={6}>
             <Card className="text-dark mb-2">
