@@ -13,4 +13,3 @@ def popularityCounter():
   medPercent = (mediocre / len(df.index)) * 100.0
   return [popPercent, unpopPercent, medPercent]
 
-#GOAL --> return an array with percentages
