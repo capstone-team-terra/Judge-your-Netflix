@@ -40,42 +40,34 @@ export default function ShowsCount(props) {
   };
   return (
     <div>
-      {sorted.length !== 0 ? (
-        <div>
-          <h2>
-            You watched{" "}
-            <span style={{ color: "blue" }}>
-              "{sorted[sorted.length - 1][0]}"
-            </span>{" "}
-            <span style={{ color: "red" }}>{sorted[sorted.length - 1][1]}</span>{" "}
-            times!
-          </h2>
-          <h3 style={{ textAlign: "center" }}>Top 3 Results</h3>
-          <ol
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              textAlign: "left",
-            }}
-          >
-            <li>
-              {sorted[sorted.length - 1][0]}: {sorted[sorted.length - 1][1]}
-            </li>
-            <li>
-              {sorted[sorted.length - 2][0]} : {sorted[sorted.length - 2][1]}
-            </li>
-            <li>
-              {sorted[sorted.length - 3][0]}: {sorted[sorted.length - 3][1]}
-            </li>
-          </ol>
-          <div>
-            <Bar data={resultData} options={options} width={800} height={600} />
-          </div>
-        </div>
-      ) : (
-        <div>data error</div>
-      )}
+      <h2>
+        You watched{" "}
+        <span style={{ color: "blue" }}>"{sorted[sorted.length - 1][0]}"</span>{" "}
+        <span style={{ color: "red" }}>{sorted[sorted.length - 1][1]}</span>{" "}
+        times!
+      </h2>
+      <h3 style={{ textAlign: "center" }}>Top 3 Results</h3>
+      <ol
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          textAlign: "left",
+        }}
+      >
+        <li>
+          {sorted[sorted.length - 1][0]}: {sorted[sorted.length - 1][1]}
+        </li>
+        <li>
+          {sorted[sorted.length - 2][0]} : {sorted[sorted.length - 2][1]}
+        </li>
+        <li>
+          {sorted[sorted.length - 3][0]}: {sorted[sorted.length - 3][1]}
+        </li>
+      </ol>
+      <div>
+        <Bar data={resultData} options={options} width={600} height={400} />
+      </div>
     </div>
   );
 }

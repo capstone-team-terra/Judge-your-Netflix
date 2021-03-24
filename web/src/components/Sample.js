@@ -57,7 +57,7 @@ const Sample = () => {
     <Container className="text-center">
       <Container className="text-center" style={{ height: "100vh" }}>
         <h1 className="netflix-red mt-5 mb-5">
-          Your Netflix Analysis <Badge variant="warning">Example</Badge>
+          Your Netflix Analysis <Badge variant="warning">Sample</Badge>
         </h1>
         <Row className="justify-content-center">
           <Col>
@@ -67,7 +67,7 @@ const Sample = () => {
                   .typeString("Analyzing sample data...")
                   .pauseFor(2500)
                   .deleteAll()
-                  .typeString("Generating your score...")
+                  .typeString("Generating the score...")
                   .pauseFor(2500)
                   .deleteAll()
                   .typeString("Done.")

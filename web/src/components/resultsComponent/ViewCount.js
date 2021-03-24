@@ -48,7 +48,7 @@ export default function ViewCount(props) {
   return (
     <div>
       <div>
-        <Line data={resultData} options={options} width={800} height={600} />
+        <Line data={resultData} options={options} width={600} height={400} />
       </div>
     </div>
   );

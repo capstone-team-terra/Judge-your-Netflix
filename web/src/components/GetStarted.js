@@ -57,7 +57,7 @@ const GetStarted = () => {
                   .start();
               }}
               options={{
-                delay: 50,
+                delay: 35,
               }}
             />
           </Row>
@@ -94,7 +94,7 @@ const GetStarted = () => {
                     .start();
                 }}
                 options={{
-                  delay: 50,
+                  delay: 35,
                 }}
               />
               {typingDone2 && (
