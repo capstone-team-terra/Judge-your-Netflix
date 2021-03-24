@@ -69,7 +69,10 @@ class UploadPage extends React.Component {
               }}
             >
               <div>
-                <p className="mb-5">Please upload your viewing history here</p>
+                <p className="mb-5">
+                  Great! <br />
+                  Please upload your Netflix viewing history here
+                </p>
                 <Card>
                   <Card.Body style={{ color: "black" }}>
                     <Form
@@ -102,7 +105,7 @@ class UploadPage extends React.Component {
                 <p className="mt-5">
                   Don't know how to get your viewing history?
                 </p>
-                <p>Follow instruction below</p>
+                <p>It's easy! Scroll down to see how</p>
               </div>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
