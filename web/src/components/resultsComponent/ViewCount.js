@@ -1,5 +1,6 @@
 import React from "react";
 import { Line } from "react-chartjs-2";
+import moment from "moment";
 
 export default function ViewCount(props) {
   const { result } = props;
@@ -9,7 +10,7 @@ export default function ViewCount(props) {
 
   //define yValues & xValues to be used with your chart
   const yValues = resultsArr.map((data) => data[1]);
-  const xValues = resultsArr.map((data) => data[0]);
+  const xValues = resultsArr.map((data) => moment(data[0]).format("MMM YY"));
 
   //main data set for Graph
   const resultData = {
@@ -34,12 +35,15 @@ export default function ViewCount(props) {
       text: "Your View Count History",
       fontSize: 25,
     },
+    legend: {
+      display: false,
+    },
     scales: {
       yAxes: [
         {
           scaleLabel: {
             display: true,
-            labelString: "total view count",
+            labelString: "total view count (per watch event)",
           },
         },
       ],

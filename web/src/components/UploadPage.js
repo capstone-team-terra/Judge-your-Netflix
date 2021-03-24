@@ -82,7 +82,6 @@ class UploadPage extends React.Component {
                       onSubmit={this.handleSubmit}
                       style={{ display: "flex", flexDirection: "column" }}
                     >
-                      <Form.Label>Upload your file: </Form.Label>
                       <Form.File
                         name="submission"
                         style={{
