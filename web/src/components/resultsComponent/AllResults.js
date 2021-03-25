@@ -5,6 +5,7 @@ import GenresCount from "./GenresCount";
 import PopularityCount from "./PopularityCount";
 import RunTime from "./RunTime";
 import Typewriter from "typewriter-effect";
+import { Col, Row } from "react-bootstrap";
 
 export class AllResults extends React.Component {
   constructor() {
@@ -37,6 +38,26 @@ export class AllResults extends React.Component {
           <GenresCount result={this.state.result.genres} />
           <PopularityCount result={this.state.result.popularity.percents} topShow={this.state.result.popularity.topShow} />
           <small>Want to learn more about the RoastFLIX algorithm? <a href='https://soundcloud.com/user-21005105-429685994/netflix-ba-boom' target='_blank'>Click Here</a></small>
+
+          <Row className="justify-content-center">
+            <Col md={6}>
+              <ShowsCount result={this.state.result.views} />
+            </Col>
+            <Col md={6}>
+              <ViewCount result={this.state.result.viewcount} />
+            </Col>
+          </Row>
+          <Row className="justify-content-center">
+            <Col md={6}>
+              <RunTime result={this.state.result.runtime} />
+            </Col>
+            <Col md={6}>
+              <GenresCount result={this.state.result.genres} />
+            </Col>
+          </Row>
+          <Row className="justify-content-center">
+            <PopularityCount result={this.state.result.popularity.percents} topShow={this.state.result.popularity.topShow} />
+          </Row>
         </div>
       )
     ) : (
