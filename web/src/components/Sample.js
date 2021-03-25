@@ -75,7 +75,7 @@ const Sample = () => {
         <UploadPage />
       ) : (
         <Container fluid>
-          <Container className="text-center" style={{ height: "100vh" }}>
+          {/* <Container className="text-center" style={{ height: "100vh" }}>
             <h1 className="netflix-red mt-5 mb-5">
               Your Netflix Analysis <Badge variant="warning">Sample</Badge>
             </h1>
@@ -127,7 +127,7 @@ const Sample = () => {
                 </Col>
               </Row>
             )}
-          </Container>
+          </Container> */}
           <Container fluid>
             <Chatbot result={results} />
           </Container>
