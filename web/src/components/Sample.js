@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Container, Col, Row, Badge, Card } from "react-bootstrap";
 import Typewriter from "typewriter-effect";
 import ShowsCount from "./resultsComponent/ShowsCount";
@@ -6,6 +6,8 @@ import GenresCount from "./resultsComponent/GenresCount";
 import PopularityCount from "./resultsComponent/PopularityCount";
 import RunTime from "./resultsComponent/RunTime";
 import ViewTime from "./resultsComponent/ViewCount";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const showData = {
   Friends: 300,
@@ -18,12 +20,12 @@ const showData = {
   "Breaking Bad": 50,
 };
 const genreData = {
-  Action: 1,
-  Comedy: 1,
-  Fantasy: 2,
-  Animation: 1,
-  Drama: 1,
-  Crime: 3,
+  Action: 10,
+  Comedy: 10,
+  Fantasy: 20,
+  Animation: 10,
+  Drama: 10,
+  Crime: 30,
 };
 
 const timeData = {
@@ -63,6 +65,11 @@ const viewCountData = {
 const popularityData = [20, 70, 10];
 
 const Sample = () => {
+  useEffect(() => {
+    AOS.init({
+      duration: 2000,
+    });
+  }, []);
   const [doneTyping, setTypingDone] = useState(false);
 
   const handleDone = () => {
@@ -125,23 +132,23 @@ const Sample = () => {
       </Container>
       <Container fluid>
         <Row className="justify-content-center">
-          <Col md={5}>
+          <Col md={5} data-aos="flip-left">
             <ShowsCount result={showData} />
           </Col>
-          <Col md={5}>
+          <Col md={5} data-aos="flip-left">
             <RunTime result={timeData} />
           </Col>
         </Row>
         <Row className="justify-content-center">
-          <Col md={5}>
+          <Col md={5} data-aos="flip-left">
             <ViewTime result={viewCountData} />
           </Col>
-          <Col md={5}>
+          <Col md={5} data-aos="flip-left">
             <GenresCount result={genreData} />
           </Col>
         </Row>
         <Row className="justify-content-center">
-          <Col md={12}>
+          <Col md={12} data-aos="flip-left">
             <PopularityCount result={popularityData} />
           </Col>
         </Row>
