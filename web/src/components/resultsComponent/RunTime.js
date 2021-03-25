@@ -86,8 +86,6 @@ export default function RunTime(props) {
         boxShadow: "0px 0px 10px 5px rgba(100, 100, 100, .6)",
         maxWidth: "700px",
         height: "690px",
-        borderRadius: "10px",
-        overflow: "hidden",
         paddingTop: "1.5em",
         paddingRight: "1.5em",
         paddingLeft: "1.5em",
