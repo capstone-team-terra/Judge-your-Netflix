@@ -30,11 +30,13 @@ export class AllResults extends React.Component {
       ) : (
         <div>
           <h2>All Results</h2>
+          <p>Based on your viewing history, you are {Math.ceil(25 + this.state.result.popularity.score)}% basic!</p>
           <ShowsCount result={this.state.result.views} />
           <ViewCount result={this.state.result.viewcount} />
           <RunTime result={this.state.result.runtime} />
           <GenresCount result={this.state.result.genres} />
-          <PopularityCount result={this.state.result.popularity} />
+          <PopularityCount result={this.state.result.popularity.percents} topShow={this.state.result.popularity.topShow} />
+          <small>Want to learn more about the RoastFLIX algorithm? <a href='https://soundcloud.com/user-21005105-429685994/netflix-ba-boom' target='_blank'>Click Here</a></small>
         </div>
       )
     ) : (
