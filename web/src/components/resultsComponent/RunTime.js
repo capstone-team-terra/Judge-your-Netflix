@@ -5,9 +5,9 @@ import { Card } from "react-bootstrap";
 
 export default function RunTime(props) {
   const { result } = props;
-
+  const { data } = result;
   //convert data object to arrays
-  const resultsArr = Object.entries(result);
+  const resultsArr = Object.entries(data);
 
   //get only past 1 year data
   const pastYear = resultsArr.slice(-12);
