@@ -27,7 +27,7 @@ class WelcomePage extends React.Component {
                   How bad is your Netflix taste?
                 </h1>
                 <p>
-                  Our sophisticated A.I. judges your awful taste in movies aånd
+                  Our sophisticated A.I. judges your awful taste in movies and
                   TV shows.
                 </p>
               </Col>

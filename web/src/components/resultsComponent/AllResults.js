@@ -5,6 +5,7 @@ import GenresCount from "./GenresCount";
 import PopularityCount from "./PopularityCount";
 import RunTime from "./RunTime";
 import Typewriter from "typewriter-effect";
+import { Col, Row } from "react-bootstrap";
 
 export class AllResults extends React.Component {
   constructor() {
@@ -29,12 +30,25 @@ export class AllResults extends React.Component {
         "No results available at this moment!"
       ) : (
         <div>
-          <h2>All Results</h2>
-          <ShowsCount result={this.state.result.views} />
-          <ViewCount result={this.state.result.viewcount} />
-          <RunTime result={this.state.result.runtime} />
-          <GenresCount result={this.state.result.genres} />
-          <PopularityCount result={this.state.result.popularity} />
+          <Row className="justify-content-center">
+            <Col md={6}>
+              <ShowsCount result={this.state.result.views} />
+            </Col>
+            <Col md={6}>
+              <ViewCount result={this.state.result.viewcount} />
+            </Col>
+          </Row>
+          <Row className="justify-content-center">
+            <Col md={6}>
+              <RunTime result={this.state.result.runtime} />
+            </Col>
+            <Col md={6}>
+              <GenresCount result={this.state.result.genres} />
+            </Col>
+          </Row>
+          <Row className="justify-content-center">
+            <PopularityCount result={this.state.result.popularity} />
+          </Row>
         </div>
       )
     ) : (

@@ -30,8 +30,8 @@ const Instruction = () => {
         alignItems: "center",
       }}
     >
-      <p className="mb-4">
-        Go to your{" "}
+      <p className="mb-4" align="left">
+        1. Sign-in your{" "}
         <a
           href="https://www.netflix.com/YourAccount"
           target="_blank"
@@ -39,7 +39,12 @@ const Instruction = () => {
         >
           Netflix Account
         </a>{" "}
-        and follow the video instruction
+        <br />
+        2. Go to Accounts <br />
+        3. Open the Profile and Parental Controls to Check Viewing activity
+        <br />
+        4. Select Download all. <br />
+        Follow the video instruction if you have more questions!
       </p>
       <Card>
         <YouTube
