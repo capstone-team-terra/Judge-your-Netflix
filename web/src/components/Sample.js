@@ -57,7 +57,7 @@ const results = {
     "2021-02": 4050,
     "2021-03": 4500,
   },
-  popularity: [20, 70, 10],
+  popularity: { percents: [20, 70, 10], score: 23, topShow: "Friends" },
 };
 
 const Sample = () => {
@@ -106,9 +106,6 @@ const Sample = () => {
             </Row>
             {doneTyping && (
               <Row className="justify-content-center mt-5 mb-5">
-                <Col>
-                  <h2>Your Basicness Level is at {70}% !</h2>
-                </Col>
                 <Col md={12} className="mt-5">
                   <h5>Scroll down to see how we judge your Netflix taste. </h5>
                   <svg
