@@ -26,6 +26,10 @@ class WelcomePage extends React.Component {
                 <h1 className="netflix-red mb-5">
                   How bad is your Netflix taste?
                 </h1>
+                <p>
+                  Our sophisticated A.I. judges your awful taste in movies aånd
+                  TV shows.
+                </p>
               </Col>
             </Row>
             <Row>

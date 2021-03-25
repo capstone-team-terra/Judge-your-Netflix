@@ -56,7 +56,7 @@ class UploadPage extends React.Component {
             <Typewriter
               options={{
                 delay: 20,
-                deleteSpeed: 10,
+                deleteSpeed: 5,
                 strings: [
                   "Analyzing your watching history...",
                   "lol",
