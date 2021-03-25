@@ -5,6 +5,7 @@ import ShowsCount from "./resultsComponent/ShowsCount";
 import GenresCount from "./resultsComponent/GenresCount";
 import PopularityCount from "./resultsComponent/PopularityCount";
 import RunTime from "./resultsComponent/RunTime";
+import ViewTime from "./resultsComponent/ViewCount";
 
 const showData = {
   Friends: 300,
@@ -12,7 +13,7 @@ const showData = {
   "Criminal Minds": 100,
   "Sherlock Holmes": 200,
   "Pans Labyrinth": 11,
-  Merlin: 20,
+  "The Witcher": 20,
   "The Croods": 1,
   "Breaking Bad": 50,
 };
@@ -26,12 +27,6 @@ const genreData = {
 };
 
 const timeData = {
-  "2019-07": 800,
-  "2019-08": 1094,
-  "2019-09": 1800,
-  "2019-10": 1294,
-  "2019-11": 2098,
-  "2019-12": 2400,
   "2020-01": 3055,
   "2020-02": 2405,
   "2020-03": 3840,
@@ -48,6 +43,23 @@ const timeData = {
   "2021-02": 4050,
   "2021-03": 4500,
 };
+const viewCountData = {
+  "2020-01": 120,
+  "2020-02": 300,
+  "2020-03": 100,
+  "2020-04": 90,
+  "2020-05": 40,
+  "2020-06": 50,
+  "2020-07": 160,
+  "2020-08": 80,
+  "2020-09": 260,
+  "2020-10": 150,
+  "2020-11": 290,
+  "2020-12": 390,
+  "2021-01": 200,
+  "2021-02": 120,
+  "2021-03": 180,
+};
 const popularityData = [20, 70, 10];
 
 const Sample = () => {
@@ -57,7 +69,7 @@ const Sample = () => {
     setTypingDone(true);
   };
   return (
-    <Container className="text-center">
+    <Container fluid>
       <Container className="text-center" style={{ height: "100vh" }}>
         <h1 className="netflix-red mt-5 mb-5">
           Your Netflix Analysis <Badge variant="warning">Sample</Badge>
@@ -111,30 +123,26 @@ const Sample = () => {
           </Row>
         )}
       </Container>
-      <Container className="text-center">
-        <Row>
-          <Col md={6}>
+      <Container fluid>
+        <Row className="justify-content-center">
+          <Col md={5}>
             <ShowsCount result={showData} />
           </Col>
-          <Col md={6}>
-            <Card className="text-dark mb-2">
-              <Card.Header>View Hours</Card.Header>
-              <RunTime result={timeData} />
-            </Card>
+          <Col md={5}>
+            <RunTime result={timeData} />
           </Col>
         </Row>
-        <Row>
-          <Col md={6}>
-            <Card className="text-dark mb-2">
-              <Card.Header>Top Genre</Card.Header>
-              <GenresCount result={genreData} />
-            </Card>
+        <Row className="justify-content-center">
+          <Col md={5}>
+            <ViewTime result={viewCountData} />
           </Col>
-          <Col md={6}>
-            <Card className="text-dark mb-2">
-              <Card.Header>Popularity</Card.Header>
-              <PopularityCount result={popularityData} />
-            </Card>
+          <Col md={5}>
+            <GenresCount result={genreData} />
+          </Col>
+        </Row>
+        <Row className="justify-content-center">
+          <Col md={12}>
+            <PopularityCount result={popularityData} />
           </Col>
         </Row>
       </Container>

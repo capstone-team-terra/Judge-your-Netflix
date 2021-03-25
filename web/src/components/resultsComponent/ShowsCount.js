@@ -1,6 +1,6 @@
 import React from "react";
 import { HorizontalBar } from "react-chartjs-2";
-import { Card, Button, Container, Row, Col } from "react-bootstrap";
+import { Card } from "react-bootstrap";
 
 export default function ShowsCount(props) {
   const { result } = props;
@@ -11,19 +11,15 @@ export default function ShowsCount(props) {
   //sort the data to small to large
   const sorted = resultsArr.sort((a, b) => b[1] - a[1]);
 
-  //filter only the top 20 most viewed shows/movies
-  const limitToTopTwenty = sorted.slice(-20);
+  //filter only the top 5 most viewed shows/movies
+  const limitToTopFive = sorted.slice(0, 5);
 
-  const top1Name = limitToTopTwenty[0][0];
-  const top1Count = limitToTopTwenty[0][1];
-  const top2Name = limitToTopTwenty[1][0];
-  const top2Count = limitToTopTwenty[1][1];
-  const top3Name = limitToTopTwenty[2][0];
-  const top3Count = limitToTopTwenty[2][1];
+  const top1Name = limitToTopFive[0][0];
+  const top1Count = limitToTopFive[0][1];
 
   //define yValues & xValues to be used with your chart
-  const yValues = limitToTopTwenty.map((data) => data[1]);
-  const xValues = limitToTopTwenty.map((data) => data[0]);
+  const yValues = limitToTopFive.map((data) => data[1]);
+  const xValues = limitToTopFive.map((data) => data[0]);
 
   //main data set for Graph
   const resultData = {
@@ -32,7 +28,6 @@ export default function ShowsCount(props) {
       {
         data: yValues,
         backgroundColor: "rgba(234, 87, 102, 0.6)",
-        borderColor: "rgba(234, 87, 102, 0.6)",
       },
     ],
   };
@@ -40,12 +35,6 @@ export default function ShowsCount(props) {
   //option for Graph
   const options = {
     maintainAspectRatio: false,
-    title: {
-      display: true,
-      text: "Which shows do you watch the most?",
-      fontSize: 20,
-      fontColor: "rgb(224, 228, 228)",
-    },
     legend: {
       display: false,
     },
@@ -53,22 +42,31 @@ export default function ShowsCount(props) {
       yAxes: [
         {
           scaleLabel: {
-            display: true,
-            labelString: "total view count (per watch event)",
             fontColor: "rgb(224, 228, 228)",
+          },
+          gridLines: {
+            color: "rgb(25, 25, 25)",
           },
           ticks: {
             fontColor: "rgb(224, 228, 228)",
+            fontSize: 15,
           },
         },
       ],
       xAxes: [
         {
           scaleLabel: {
+            display: true,
+            labelString: "Total view count (per watch event)",
             fontColor: "rgb(224, 228, 228)",
+            fontSize: 15,
+          },
+          gridLines: {
+            color: "rgb(25, 25, 25)",
           },
           ticks: {
             fontColor: "rgb(224, 228, 228)",
+            fontSize: 15,
           },
         },
       ],
@@ -77,41 +75,38 @@ export default function ShowsCount(props) {
   return (
     <Card
       style={{
-        backgroundColor: "rgb(34, 36, 41)",
-        boxShadow: "0 0 6px rgba(0, 0, 0, 0.1)",
-        maxWidth: "500px",
-        height: "500px",
+        background: "rgb(34, 36, 41)",
+        boxShadow: "0px 0px 10px 5px rgba(100, 100, 100, .6)",
+        maxWidth: "700px",
+        height: "690px",
         borderRadius: "10px",
         overflow: "hidden",
-        paddingTop: "1em",
-        paddingBotton: "2em",
+        paddingTop: "1.5em",
+        paddingRight: "1.5em",
+        paddingLeft: "1.5em",
+        paddingBottom: "1em",
+        margin: "1em",
         color: "rgb(224, 228, 228)",
+        display: "flex",
+        justifyContent: "space-between",
       }}
     >
-      <div
-        className="about"
-        style={{ height: "150px", padding: "20px", boxSizing: "border-box" }}
-      >
-        <div>
-          <HorizontalBar
-            data={resultData}
-            options={options}
-            width={500}
-            height={250}
-          />
-        </div>
-        {/* <h1 style={{ fontSize: "20px" }}>
-          You watched <strong>{top1Name}</strong>{" "}
-          <span style={{ color: "red" }}>{top1Count}</span> times!
-        </h1> */}
-        {/* <h2 style={{ fontSize: "15px" }}>Your Top 3 Most Viewed Shows</h2>
-        <p style={{ fontSize: "15px" }}>
-          {top1Name}: {top1Count} <br />
-          {top2Name} : {top2Count}
-          <br />
-          {top3Name}: {top3Count}
-        </p> */}
+      <Card.Title style={{ textAlign: "center", fontSize: 30 }}>
+        Top 5 most viewed shows
+      </Card.Title>
+      <div>
+        <HorizontalBar
+          data={resultData}
+          options={options}
+          width={600}
+          height={400}
+        />
       </div>
+      <p style={{ fontSize: "20px", fontStyle: "italic" }}>
+        Your most viewed show was <strong>{top1Name}</strong> and you watched it
+        <span style={{ color: "rgba(234, 87, 102)" }}> {top1Count}</span> times
+        ! Wow.
+      </p>
     </Card>
   );
 }
