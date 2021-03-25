@@ -39,7 +39,7 @@ class ChatbotPage extends React.Component {
     const sorted = resultsArr.sort((a, b) => b[1] - a[1]);
     const viewsArr = Object.entries(views);
     const viewsSorted = viewsArr.sort((a, b) => b[1] - a[1]);
-    const totalHours = hoursArr
+    const totalEpisodes = hoursArr
       .map((dateHour) => dateHour[1])
       .reduce((a, b) => a + b, 0);
     const steps = [
@@ -125,7 +125,7 @@ class ChatbotPage extends React.Component {
       },
       {
         id: "10",
-        message: `You watched ${totalHours} hours of Netflix.`,
+        message: `You watched ${totalEpisodes} episodes of Netflix shows.`,
         trigger: "11",
         delay: 3000,
       },
@@ -197,7 +197,7 @@ class ChatbotPage extends React.Component {
         <ThemeProvider theme={theme}>
           <ChatBot
             steps={steps}
-            width="1000px"
+            width="1200px"
             height="1000px"
             placeholder=" "
             hideBotAvatar="true"

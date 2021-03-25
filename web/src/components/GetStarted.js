@@ -85,7 +85,7 @@ const GetStarted = () => {
                 onInit={(typewriter) => {
                   typewriter
                     .typeString(
-                      "hmmm, I can't judge your Netflix without seeing your view history. <br /> If you really don't want to, you can check out our analysis based on sample data."
+                      "Well, I can't judge your taste without seeing your Netflix view history. <br /> If you really don't want to, you can check out our analysis based on sample data."
                     )
                     .pauseFor(1500)
                     .callFunction(() => {

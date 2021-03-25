@@ -1,6 +1,6 @@
 import React from "react";
 import { Pie } from "react-chartjs-2";
-
+import { Card } from "react-bootstrap";
 export default function GenresCount(props) {
   const { result } = props;
   const resultsArr = Object.entries(result);
@@ -18,48 +18,47 @@ export default function GenresCount(props) {
       {
         label: "Watches",
         backgroundColor: [
-          "#336699",
-          "#99CCFF",
-          "#999933",
+          "rgba(234, 87, 102)",
+          "rgb(155, 67, 8)",
+          "rgb(223, 54, 12)",
           "#666699",
           "#CC9933",
-          "#006666",
-          "#3399FF",
-          "#993300",
-          "#CCCC99",
-          "#666666",
-          "#FFCC66",
-          "#6699CC",
-          "#663366",
-          "#9999CC",
-          "#CCCCCC",
-          "#669999",
-          "#CCCC66",
-          "#CC6600",
-          "#9999FF",
-          "#0066CC",
-          "#99CCCC",
         ],
         data: numArr,
+        hoverOffset: 30,
       },
     ],
   };
   return (
     <div>
       {sorted.length !== 0 ? (
-        <div>
-          <h2>
-            Hmm.... You watched {sorted[0][1]} {sorted[0][0]} shows...
-          </h2>
+        <Card
+          style={{
+            background: "rgb(34, 36, 41)",
+            boxShadow: "0px 0px 10px 5px rgba(100, 100, 100, .6)",
+            maxWidth: "700px",
+            height: "690px",
+            borderRadius: "10px",
+            overflow: "hidden",
+            paddingTop: "1.5em",
+            paddingRight: "1.5em",
+            paddingLeft: "1.5em",
+            paddingBottom: "1em",
+            margin: "1em",
+            color: "rgb(224, 228, 228)",
+            display: "flex",
+            justifyContent: "space-between",
+          }}
+        >
+          <div>
+            <Card.Title style={{ textAlign: "center", fontSize: 30 }}>
+              Top 5 most viewed genres
+            </Card.Title>
+          </div>
           <div>
             <Pie
               data={state}
               options={{
-                title: {
-                  display: true,
-                  text: "Your Top Genres",
-                  fontSize: 20,
-                },
                 legend: {
                   display: true,
                 },
@@ -68,7 +67,16 @@ export default function GenresCount(props) {
               height={400}
             />
           </div>
-        </div>
+          <div>
+            <p style={{ fontSize: "20px", fontStyle: "italic" }}>
+              You watched{" "}
+              <span style={{ color: "rgba(234, 87, 102)" }}>
+                {sorted[0][1]}{" "}
+              </span>
+              {sorted[0][0]} shows... Such great taste!
+            </p>
+          </div>
+        </Card>
       ) : (
         <div>No genres data</div>
       )}
