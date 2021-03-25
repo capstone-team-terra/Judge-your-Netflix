@@ -15,6 +15,9 @@ class UploadPage extends React.Component {
     };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
+  componentDidMount() {
+    window.scrollTo(0, 0);
+  }
   async handleSubmit(e) {
     e.preventDefault();
     console.log(e.target);
