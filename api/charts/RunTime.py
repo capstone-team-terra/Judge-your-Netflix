@@ -2,10 +2,10 @@ import pandas as pd
 import numpy as np
 
 
-def runTime():
-    df_mydata = pd.read_csv('./NetflixViewingHistory.csv')
+def runTime(fileRef):
+    df_mydata = pd.read_csv(fileRef)
     # below csv includes new column (runTime) to ratings csv
-    df_merged = pd.read_csv('./ratings.csv')
+    df_merged = pd.read_csv('https://firebasestorage.googleapis.com/v0/b/test-e5975.appspot.com/o/ratings.csv?alt=media&token=25e90d88-88bf-4475-834b-38de0f1722a7')
 
     # below function does similar to pickleData.py
     df_mydata['rootName'] = df_mydata['Title'].apply(

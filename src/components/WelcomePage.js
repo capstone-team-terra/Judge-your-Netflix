@@ -10,6 +10,9 @@ class WelcomePage extends React.Component {
     this.handleClick = this.handleClick.bind(this);
   }
   handleClick() {
+    const snd = new Audio("https://firebasestorage.googleapis.com/v0/b/test-e5975.appspot.com/o/Netflix-Intro.wav?alt=media&token=c51293bc-06c4-40dd-b55d-867dd01b3472"); // buffers automatically when created
+    snd.play();
+
     this.setState({ clicked: true });
   }
 
