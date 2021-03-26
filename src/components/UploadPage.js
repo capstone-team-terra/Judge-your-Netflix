@@ -3,7 +3,7 @@ import ChatbotPage from "./chatComponent/ChatbotPage";
 import Typewriter from "typewriter-effect";
 import Instruction from "./Instruction";
 import { Form, Button, Card } from "react-bootstrap";
-import {app} from '../base'
+import { app } from "../config";
 
 class UploadPage extends React.Component {
   constructor(props) {
@@ -21,7 +21,7 @@ class UploadPage extends React.Component {
   }
   async handleSubmit(e) {
     e.preventDefault();
-    const file = e.target[0].files[0]
+    const file = e.target[0].files[0];
     if (e.target[0].files.length > 0) {
       this.setState({
         loading: true,
@@ -32,27 +32,28 @@ class UploadPage extends React.Component {
     } else {
       console.log("no file chosen");
     }
-    const storageRef = app.storage().ref()
+    const storageRef = app.storage().ref();
     function keyGenerator(n) {
-      const characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
-      let randomString = '';
+      const characters =
+        "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+      let randomString = "";
       for (let i = 0; i < n; i++) {
-          let index = Math.floor(Math.random() * ((characters.length) - 1));
-          randomString += characters[index];
+        let index = Math.floor(Math.random() * (characters.length - 1));
+        randomString += characters[index];
       }
       return randomString;
     }
-    const fileRef = storageRef.child(keyGenerator(3)) // rename file here
-    await fileRef.put(file)
-    await fileRef.put(file)
-    const downloadURL = await fileRef.getDownloadURL()
+    const fileRef = storageRef.child(keyGenerator(3)); // rename file here
+    await fileRef.put(file);
+    await fileRef.put(file);
+    const downloadURL = await fileRef.getDownloadURL();
     const res = await fetch("/handleUpload", {
       method: "POST",
       headers: {
         "Access-Control-Allow-Origin": "*",
       },
-      body: downloadURL
-    })
+      body: downloadURL,
+    });
     // if (e.target[0].files.length > 0) {
     //   this.setState({
     //     loading: true,
