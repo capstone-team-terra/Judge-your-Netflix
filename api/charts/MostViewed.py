@@ -1,8 +1,8 @@
 import pandas as pd
 
 
-def runThis():
-    df = pd.read_csv('./NetflixViewingHistory.csv')
+def viewsCounter(data):
+    df = pd.read_csv(data)
     dict = {}
 
     def countShow(title):
