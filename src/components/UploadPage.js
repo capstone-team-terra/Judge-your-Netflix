@@ -3,6 +3,7 @@ import ChatbotPage from "./chatComponent/ChatbotPage";
 import Typewriter from "typewriter-effect";
 import Instruction from "./Instruction";
 import { Form, Button, Card } from "react-bootstrap";
+import {app} from '../base'
 
 class UploadPage extends React.Component {
   constructor(props) {
@@ -20,7 +21,7 @@ class UploadPage extends React.Component {
   }
   async handleSubmit(e) {
     e.preventDefault();
-    console.log(e.target);
+    const file = e.target[0].files[0]
     if (e.target[0].files.length > 0) {
       this.setState({
         loading: true,
@@ -31,17 +32,47 @@ class UploadPage extends React.Component {
     } else {
       console.log("no file chosen");
     }
-    const data = new FormData();
-    data.append("submission", e.target[0].files[0]);
-    const res = await fetch("http://127.0.0.1:3145/handleUpload", {
+    const storageRef = app.storage().ref()
+    function keyGenerator(n) {
+      const characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
+      let randomString = '';
+      for (let i = 0; i < n; i++) {
+          let index = Math.floor(Math.random() * ((characters.length) - 1));
+          randomString += characters[index];
+      }
+      return randomString;
+    }
+    const fileRef = storageRef.child(keyGenerator(3)) // rename file here
+    await fileRef.put(file)
+    await fileRef.put(file)
+    const downloadURL = await fileRef.getDownloadURL()
+    const res = await fetch("/handleUpload", {
       method: "POST",
       headers: {
         "Access-Control-Allow-Origin": "*",
       },
-      body: data,
-    });
+      body: downloadURL
+    })
+    // if (e.target[0].files.length > 0) {
+    //   this.setState({
+    //     loading: true,
+    //     loaded: false,
+    //     result: {},
+    //     fileChosen: true,
+    //   });
+    // } else {
+    //   console.log("no file chosen");
+    // }
+    // const data = new FormData();
+    // data.append("submission", e.target[0].files[0]);
+    // const res = await fetch("http://127.0.0.1:3145/handleUpload", {
+    //   method: "POST",
+    //   headers: {
+    //     "Access-Control-Allow-Origin": "*",
+    //   },
+    //   body: data,
+    // });
     var jsonRes = await res.json();
-    console.log(jsonRes);
     this.setState({ loaded: true, result: jsonRes, loading: false });
   }
 
@@ -54,7 +85,7 @@ class UploadPage extends React.Component {
           <div>
             <img
               alt="loading"
-              src="https://data.whicdn.com/images/325605417/original.gif"
+              src="https://firebasestorage.googleapis.com/v0/b/roastflix-a53f3.appspot.com/o/Netflix-Loading.gif?alt=media&token=a0196e4a-1e7e-40eb-8793-45abfd359695"
             />
             <Typewriter
               options={{

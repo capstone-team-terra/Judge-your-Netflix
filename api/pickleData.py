@@ -2,9 +2,9 @@ import pickle
 import pandas as pd
 
 
-def pickleThis():
-    df_origin_history = pd.read_csv('./NetflixViewingHistory.csv')
-    df_origin_ratings = pd.read_csv('./ratings.csv')
+def pickleThis(data):
+    df_origin_history = pd.read_csv(data)
+    df_origin_ratings = pd.read_csv('https://firebasestorage.googleapis.com/v0/b/roastflix-a53f3.appspot.com/o/ratings.csv?alt=media&token=5e36d2fb-ea31-43aa-9857-5e77c2f5a1e7')
 
     df_origin_history['rootName'] = df_origin_history['Title'].apply(
         lambda q: q.split(":")[0] if type(q) == str else q)
