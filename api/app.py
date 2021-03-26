@@ -11,7 +11,7 @@ from charts.WatchTime import watchFrequency
 from charts.MostPopular import popularityCounter
 from charts.RunTime import runTime
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder="../build", static_url_path='/')
 CORS(app)
 
 @app.route('/')
